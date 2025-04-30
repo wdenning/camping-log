@@ -8,7 +8,7 @@ import './styles/Page.css';
 
 function App() {
   return (
-    <Router>
+    <Router basename="/camping-log">
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/about" element={<About />} />
