@@ -1,4 +1,3 @@
-import React from 'react';
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 import '../styles/Post.css';
@@ -26,4 +25,4 @@ const Post = ({ content }: PostProps) => {
   );
 };
 
-export default Post; 
+export default Post;

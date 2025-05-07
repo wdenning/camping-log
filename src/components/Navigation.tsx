@@ -1,7 +1,3 @@
-import { Link } from 'react-router-dom';
-import fireUnlit from '../assets/fire-unlit.svg';
-import fireFrame1 from '../assets/fire-frame-1.svg';
-import fireFrame2 from '../assets/fire-frame-2.svg';
 import bracketUpper from '../assets/bracket-upper.svg';
 import bracketLower from '../assets/bracket-lower.svg';
 import NavLink from './NavLink';
@@ -24,4 +20,4 @@ const Navigation = ({ className = '' }: NavigationProps) => {
   );
 };
 
-export default Navigation; 
+export default Navigation;
