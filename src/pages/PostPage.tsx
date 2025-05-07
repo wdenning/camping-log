@@ -1,16 +1,17 @@
-import '../styles/Page.css';
-import NavLink from '../components/NavLink';
+import { useParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
+import NavLink from '../components/NavLink';
 import Post from '../components/Post';
+import '../styles/Page.css';
 
-const About = () => {
-
+const PostPage = () => {
+  const { postId } = useParams();
   const [content, setContent] = useState<string>('');
 
   useEffect(() => {
     const fetchPost = async () => {
       try {
-        const response = await fetch(`/camping-log/posts/about.md`);
+        const response = await fetch(`/camping-log/posts/${postId}.md`);
         if (!response.ok) throw new Error('Post not found');
         const text = await response.text();
         setContent(text);
@@ -21,18 +22,18 @@ const About = () => {
     };
 
     fetchPost();
-  });
+  }, [postId]);
 
   return (
     <div className="page-container">
-      <div className="back-link-container">
-        <NavLink to="/" label="Back" />
-      </div>
       <div className="page-content">
         <Post content={content} />
+      </div>
+      <div className="back-link-container">
+        <NavLink to="/posts" label="Back" />
       </div>
     </div>
   );
 };
 
-export default About; 
+export default PostPage; 
