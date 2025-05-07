@@ -1,5 +1,4 @@
-import { BrowserRouter as Router, Routes, Route, useNavigate } from 'react-router-dom';
-import { useEffect } from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Home from './pages/Home';
 import About from './pages/About';
 import Posts from './pages/Posts';
@@ -9,16 +8,6 @@ import Gear from './pages/Gear';
 import './styles/Page.css';
 
 function App() {
-  const navigate = useNavigate();
-
-  useEffect(() => {
-    const redirect = sessionStorage.redirect;
-    if (redirect) {
-      sessionStorage.removeItem('redirect');
-      navigate(redirect, { replace: true });
-    }
-  }, [navigate]);
-
   return (
     <Router basename="/camping-log">
       <Routes>
