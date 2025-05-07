@@ -58,3 +58,22 @@ jobs:
 
       - name: Build
         run: npm run build
+
+  merge:
+    if: github.event.pull_request.labels.*.name contains 'merge when ready' && success()
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Merge Pull Request
+        uses: actions/github-script@v6
+        with:
+          script: |
+            const { context, github } = require('@actions/github');
+            const prNumber = context.payload.pull_request.number;
+            await github.pulls.merge({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              pull_number: prNumber,
+            });
