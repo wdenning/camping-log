@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Page Not Found</title>
     <script>
+      console.log('404.html loaded');
       const redirectPath = location.pathname + location.search + location.hash;
       sessionStorage.redirect = redirectPath;
       window.location.replace('/');
