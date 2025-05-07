@@ -1,9 +1,8 @@
-name: Build Validation
+name: Build and Deploy
 
 on:
   push:
     branches: ["main"]
-  workflow_dispatch:
   pull_request:
     branches: ["main"]
 
@@ -33,47 +32,26 @@ jobs:
       - name: Build
         run: npm run build
 
+      - name: Upload artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: build-artifact
+          path: ./dist
+
+  deploy:
+    needs: build
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Download artifact
+        uses: actions/download-artifact@v3
+        with:
+          name: build-artifact
+
       - name: Setup Pages
         uses: actions/configure-pages@v4
 
-      - name: Upload artifact
+      - name: Deploy to Pages
         uses: actions/upload-pages-artifact@v3
         with:
-          path: "./dist"
-
-  pr-build:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: "20"
-          cache: "npm"
-
-      - name: Install dependencies
-        run: npm ci
-
-      - name: Build
-        run: npm run build
-
-  merge:
-    if: contains(github.event.pull_request.labels.*.name, 'merge when ready') && success()
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-
-      - name: Merge Pull Request
-        uses: actions/github-script@v6
-        with:
-          script: |
-            const { context, github } = require('@actions/github');
-            const prNumber = context.payload.pull_request.number;
-            await github.pulls.merge({
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              pull_number: prNumber,
-            });
+          path: ./dist
