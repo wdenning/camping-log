@@ -60,7 +60,7 @@ jobs:
         run: npm run build
 
   merge:
-    if: github.event.pull_request.labels.*.name contains 'merge when ready' && success()
+    if: contains(github.event.pull_request.labels.*.name, 'merge when ready') && success()
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
