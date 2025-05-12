@@ -18,7 +18,7 @@ It's both innate and ehterial.
 
 I miss it greatly.
 
-<hr />
+---
 
 On rainy morning in 2009, my mom, my brother and I set off into the North Carolinean wilderness to find something that we had read was closeby. Something mythic: The Appalachian Trail. We had become somewhat intermediate hikers at that time, going from peak to peak around North Carolina. Whiteside Mountian, Rainbow Falls and, ironicly, Amicalola falls would set the backgrop for a liftime of East Coast hiking.
 
