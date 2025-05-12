@@ -29,16 +29,22 @@ const Posts = () => {
       });
   }, []);
 
+  const allPosts = Array.from({ length: 33 }, (_, i) => i + 1);
+  const displayedPosts = allPosts.map((number) => ({
+    number,
+    disabled: !posts.includes(number),
+  }));
+
   return (
     <div className="page-container">
       <div className="page-content">
         <h1>Camping Posts</h1>
         <div className="posts-grid">
-          {posts.map((number) => (
+          {displayedPosts.map(({ number, disabled }) => (
             <Link 
               key={number} 
               to={`/posts/${number.toString().padStart(2, '0')}`}
-              className="post-square"
+              className={`post-square ${disabled ? 'disabled' : ''}`}
             >
               <span className="post-number">{number.toString().padStart(2, '0')}</span>
             </Link>
