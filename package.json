@@ -4,10 +4,11 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "vite",
-    "build": "tsc -b && vite build",
+    "dev": "npm run generate-posts && vite",
+    "build": "npm run generate-posts && vite build",
     "lint": "eslint .",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "generate-posts": "node scripts/generatePostsJson.js"
   },
   "dependencies": {
     "leaflet": "^1.9.4",
