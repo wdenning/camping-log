@@ -1,7 +1,9 @@
 import '../styles/Page.css';
+import '../styles/Posts.css';
 import NavLink from '../components/NavLink';
 import { Link } from 'react-router-dom';
 import { useEffect, useState } from 'react';
+import Cookies from 'js-cookie';
 
 const Posts = () => {
   const [posts, setPosts] = useState<number[]>([]);
@@ -29,10 +31,22 @@ const Posts = () => {
       });
   }, []);
 
+  const getReadPosts = () => {
+    const readPosts = Cookies.get('readPosts');
+    return readPosts ? JSON.parse(readPosts) : [];
+  };
+
+  const resetReadStatus = () => {
+    Cookies.remove('readPosts');
+    window.location.reload(); // Reload the page to reflect changes
+  };
+
   const allPosts = Array.from({ length: 33 }, (_, i) => i + 1);
+  const readPosts = getReadPosts();
   const displayedPosts = allPosts.map((number) => ({
     number,
     disabled: !posts.includes(number),
+    read: readPosts.includes(number),
   }));
 
   return (
@@ -40,16 +54,18 @@ const Posts = () => {
       <div className="page-content">
         <h1>Camping Posts</h1>
         <div className="posts-grid">
-          {displayedPosts.map(({ number, disabled }) => (
+          {displayedPosts.map(({ number, disabled, read }) => (
             <Link 
               key={number} 
               to={`/posts/${number.toString().padStart(2, '0')}`}
-              className={`post-square ${disabled ? 'disabled' : ''}`}
+              className={`post-square ${disabled ? 'disabled' : ''} ${read ? 'read' : ''}`}
             >
               <span className="post-number">{number.toString().padStart(2, '0')}</span>
+              {read && <span className="read-tag">Read</span>}
             </Link>
           ))}
         </div>
+        <button className="reset-button" onClick={resetReadStatus}>Reset Read Status</button>
       </div>
       <div className="back-link-container">
         <NavLink to="/" label="Back" />

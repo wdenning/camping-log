@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Jersey+15&display=swap');
+@import './Posts.css';
 
 :root {
   --max-width-desktop: 1400px;
@@ -48,49 +49,6 @@
   line-height: 1.6;
 }
 
-.posts-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-  gap: 1rem;
-  margin-top: 2rem;
-}
-
-.post-square {
-  aspect-ratio: 1;
-  background-color: rgba(208, 193, 193, 0.1);
-  display: flex;
-  align-items: flex-start;
-  justify-content: flex-start;
-  position: relative;
-  transition: transform 0.3s ease, background-color 0.3s ease;
-  padding: 1rem;
-  text-decoration: none;
-  color: inherit;
-}
-
-.post-square.disabled {
-  background-color: rgba(208, 193, 193, 0.05);
-  opacity: 0.5;
-  pointer-events: none;
-}
-
-.post-square:hover {
-  transform: translateY(-5px);
-  background-color: rgba(208, 193, 193, 0.2);
-}
-
-.post-square.disabled:hover {
-  transform: none;
-  background-color: rgba(208, 193, 193, 0.05);
-}
-
-.post-number {
-  font-size: 6rem;
-  color: #D0C1C1;
-  font-family: 'Jersey 15', sans-serif;
-  line-height: 1;
-}
-
 @media (max-width: 1200px) {
   .page-container {
     max-width: var(--max-width-laptop);
@@ -109,14 +67,6 @@
     justify-content: flex-start;
     margin-bottom: 1rem;
   }
-  
-  .posts-grid {
-    grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
-  }
-  
-  .post-number {
-    font-size: 5rem;
-  }
 }
 
 @media (max-width: 600px) {
@@ -124,12 +74,4 @@
     max-width: var(--max-width-mobile);
     padding: 1rem;
   }
-  
-  .posts-grid {
-    grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
-  }
-  
-  .post-number {
-    font-size: 4rem;
-  }
-} 
+}

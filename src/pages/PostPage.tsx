@@ -1,5 +1,6 @@
 import { useParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
+import Cookies from 'js-cookie';
 import NavLink from '../components/NavLink';
 import Post from '../components/Post';
 import '../styles/Page.css';
@@ -15,6 +16,14 @@ const PostPage = () => {
         if (!response.ok) throw new Error('Post not found');
         const text = await response.text();
         setContent(text);
+
+        // Update the readPosts cookie
+        const readPosts = Cookies.get('readPosts');
+        const readPostsArray = readPosts ? JSON.parse(readPosts) : [];
+        if (!readPostsArray.includes(Number(postId))) {
+          readPostsArray.push(Number(postId));
+          Cookies.set('readPosts', JSON.stringify(readPostsArray), { expires: 365 });
+        }
       } catch (error) {
         console.error('Error loading post:', error);
         setContent('# Post Not Found\n\nThe requested post could not be found.');
@@ -36,4 +45,4 @@ const PostPage = () => {
   );
 };
 
-export default PostPage; 
+export default PostPage;
