@@ -24,9 +24,10 @@ a:hover {
 
 body {
   margin: 0;
+  padding: 0;
+  overflow-x: hidden;
   min-width: 320px;
   min-height: 100vh;
-  padding: 0 6em;
   background-color: #5A1C22
 }
 

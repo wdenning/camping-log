@@ -16,7 +16,7 @@ const MapPage = () => {
   const closeDialog = () => dialogRef.current?.close();
 
   return (
-    <div className="page-container">
+    <div>
       <div className="back-link-container">
         <NavLink to="/" label="Back" />
       </div>

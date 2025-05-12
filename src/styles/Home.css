@@ -69,6 +69,8 @@
   position: relative;
   height: 6em;
   padding-left: 6em;
+
+
 }
 
 .fire-icon {
@@ -172,4 +174,63 @@
   .nav-card h2 {
     font-size: 4rem;
   }
-} 
+}
+
+@media (max-width: 480px) {
+  .home-container {
+    padding: 0.5rem;
+    overflow-x: hidden;
+    box-sizing: border-box;
+  }
+
+  .content-wrapper {
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 0.5rem;
+    margin: 0;
+  }
+
+  .header {
+    text-align: center;
+  }
+
+  .header img {
+    max-width: 70%;
+    height: auto;
+  }
+
+  .nav-title {
+    height: 2em;
+    padding-left: 3em;
+  }
+
+  .nav-card {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 0.5rem;
+    margin: 0;
+  }
+
+  .nav-card h2 {
+    font-size: 2rem;
+  }
+
+  .nav-card p {
+    font-size: 0.8rem;
+  }
+
+  .fire-icon {
+    width: 2.5em;
+    height: 2.5em;
+    top: 0;
+  }
+  .fire-icon.unlit {
+    padding-top: 1em;
+  }
+  .bracket.lower {
+    margin-top: 2em;
+  }
+}
