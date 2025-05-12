@@ -29,6 +29,7 @@ const About = () => {
         <NavLink to="/" label="Back" />
       </div>
       <div className="page-content">
+        <iframe width="100%" height="315" src="https://www.youtube.com/embed/RzACrNBYKFE?start=1198&autoplay=1" title="YouTube video player" allow="autoplay; encrypted-media"></iframe>
         <Post content={content} />
       </div>
     </div>

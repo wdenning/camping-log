@@ -1,7 +1,16 @@
 import { useEffect, useRef } from "react";
 import L from "leaflet";
 import "leaflet/dist/leaflet.css";
+import 'leaflet.fullscreen';
+import 'leaflet.fullscreen/Control.FullScreen.css';
 import trailData from "../assets/centerline.json";
+
+// Extend the Leaflet control type to include the fullscreen plugin
+declare module "leaflet" {
+  namespace control {
+    function fullscreen(options?: any): Control;
+  }
+}
 
 const calculateCumulativeDistances = (coordinates: [number, number][]) => {
   const distances = [0];
@@ -39,6 +48,12 @@ const Map = ({ milesPerDay }: { milesPerDay: number }) => {
   useEffect(() => {
     if (!mapRef.current) {
       const map = L.map("map").setView([35.39352808136067, -83.42742919921875], 8);
+
+      // Add fullscreen control to the map
+      L.control.fullscreen({
+        position: "topleft",
+      }).addTo(map);
+
       mapRef.current = map;
 
       L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
