@@ -15,6 +15,14 @@ function generatePostsJson() {
     .map((file) => file)
     .sort();
 
+  // Add disabled posts up to 33
+  for (let i = 2; i <= 33; i++) {
+    const postFile = `${i.toString().padStart(2, '0')}.md`;
+    if (!posts.includes(postFile)) {
+      posts.push(postFile);
+    }
+  }
+
   fs.writeFileSync(outputFile, JSON.stringify(posts, null, 2));
   console.log("posts.json has been generated.");
 }
