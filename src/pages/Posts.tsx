@@ -38,7 +38,7 @@ const Posts = () => {
             <Link 
               key={number} 
               to={`/posts/${number.toString().padStart(2, '0')}`}
-              className={`post-square ${number > 1 && number <= 33 ? 'disabled' : ''}`}
+              className={`post-square`}
             >
               <span className="post-number">{number.toString().padStart(2, '0')}</span>
             </Link>
