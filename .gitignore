@@ -25,3 +25,6 @@ dist-ssr
 
 # Generated posts.json file
 public/posts/posts.json
+
+# Ignore generated PDF files
+public/files/

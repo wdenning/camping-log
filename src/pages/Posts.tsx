@@ -44,6 +44,26 @@ const Posts = () => {
             </Link>
           ))}
         </div>
+        <div style={{ marginTop: '2em', textAlign: 'center' }}>
+          <a
+            href={"/camping-log/files/allPosts.pdf"}
+            download
+            className="download-pdf-btn"
+            style={{
+              display: 'inline-block',
+              padding: '0.75em 1.5em',
+              background: '#333',
+              color: '#fff',
+              borderRadius: '4px',
+              textDecoration: 'none',
+              fontWeight: 'bold',
+              fontSize: '1.1em',
+              marginTop: '1em',
+            }}
+          >
+            Download all posts as PDF
+          </a>
+        </div>
       </div>
       <div className="back-link-container">
         <NavLink to="/" label="Back" />
